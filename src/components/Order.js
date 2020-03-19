@@ -17,14 +17,14 @@ function Order(props) {
     }
 
     const onHandleSubmitCustomerInfo = () => {
-        fetch('https://git.heroku.com/damp-brushlands-91192.git', {
+        fetch('https://cors-anywhere.herokuapp.com/https://git.heroku.com/damp-brushlands-91192.git', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(customerInfo)
         }).then(response => response.json())
-        .then(window.location.href = "/order-success")
+        //.then(window.location.href = "/order-success")
     }
 
     return(<>
