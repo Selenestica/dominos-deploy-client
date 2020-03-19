@@ -5,7 +5,7 @@ function SandwichMenu(props) {
 
     const [menuData, setMenuData] = useState([])
 
-    useEffect((props) => {
+    useEffect(() => {
 
         const storeId = props.storeId
 
