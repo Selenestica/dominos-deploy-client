@@ -17,7 +17,7 @@ function Order(props) {
     }
 
     const onHandleSubmitCustomerInfo = () => {
-        fetch('http://localhost:1200/order/add-order', {
+        fetch('https://git.heroku.com/damp-brushlands-91192.git', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
