@@ -13,6 +13,8 @@ const initialState = {
     saladMenuOpen: false,
     sandwichMenuOpen: false,
     wingsMenuOpen: false,
+    isError: false,
+    missingField: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -166,6 +168,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 wingsMenuOpen: false
             }
+        }
+    }
+
+    else if (action.type === 'DISPLAY_ORDER_ERROR') {
+        return {
+            ...state,
+            isError: true
+        }
+    }
+
+    else if (action.type === 'DISPLAY_MISSING_FIELD_ERROR') {
+        return {
+            ...state,
+            missingField: true
         }
     }
 

@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import ClosestStore from './ClosestStore'
 import AllMenus from './menus/AllMenus'
+import Alerts from './Alerts'
+import axios from 'axios'
 
 function Order(props) {
 
@@ -16,15 +18,31 @@ function Order(props) {
         }) 
     }
 
-    const onHandleSubmitCustomerInfo = () => {
-        fetch('https://cors-anywhere.herokuapp.com/https://git.heroku.com/damp-brushlands-91192.git', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(customerInfo)
-        }).then(response => response.json())
-        //.then(window.location.href = "/order-success")
+    const onHandleSubmitCustomerInfo = async () => {
+        if (
+            customerInfo.firstName || 
+            customerInfo.lastName ||
+            customerInfo.email ||
+            customerInfo.phone ||
+            customerInfo.cardNumber ||
+            customerInfo.expiration ||
+            customerInfo.securityCode ||
+            customerInfo.cardZip || null
+        ) 
+        {
+            props.missingField()
+        }
+        else {
+            try {
+                const response = await axios.post('https://cors-anywhere.herokuapp.com/https://damp-brushlands-91192.herokuapp.com/order/add-order', customerInfo)
+                console.log(response.status)
+                window.location.href = '/order-success'
+            }
+            catch (error) {
+                console.log(error)
+                props.isError()            
+            }
+        }
     }
 
     return(<>
@@ -74,6 +92,7 @@ function Order(props) {
                             <input type="text" onChange={handleChange} name="securityCode" placeholder="security code" />
                             <input type="text" onChange={handleChange} name="cardZip" placeholder="zip code" />
                         </div>
+                        <Alerts />
                         <div onClick={onHandleSubmitCustomerInfo} className="green place-order-button-div">
                             <a className="place-order-button"><i className="material-icons carryout-icon large">check</i><h1 className="place-order-text">Place order</h1></a>
                         </div>
@@ -90,11 +109,15 @@ function Order(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerInfo) => dispatch({type: 'ADDRESS_SAVED', customerInfo: newCustomerInfo}),
+        isError: () => dispatch({type: 'DISPLAY_ORDER_ERROR'}),
+        missingField: () => dispatch({type: 'DISPLAY_MISSING_FIELD_ERROR'})
     }
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
+        propsState: state,
         addressNotNull: state.addressNotNull,
         storeIdNotNull: state.storeIdNotNull,
         storeId: state.storeId,

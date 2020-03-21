@@ -123,3 +123,8 @@
 .menu-toggle-row {
     margin-bottom: 0rem !important;
 }
+
+.green-box {
+    padding: 3rem;
+    background-color: green;
+}
