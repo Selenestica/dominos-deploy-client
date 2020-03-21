@@ -15,12 +15,18 @@ function Order(props) {
             [e.target.name]: e.target.value,
             chosenStore: props.storeId,
             itemCode: props.itemId
-        }) 
+        })
+        props.customerContactInfo(
+            customerInfo.email,
+            customerInfo.phone,
+            customerInfo.firstName,
+            customerInfo.lastName
+        )
     }
 
     const onHandleSubmitCustomerInfo = async () => {
         if (
-            customerInfo.firstName || 
+            customerInfo.firstName  || 
             customerInfo.lastName ||
             customerInfo.email ||
             customerInfo.phone ||
@@ -36,7 +42,7 @@ function Order(props) {
             try {
                 const response = await axios.post('https://cors-anywhere.herokuapp.com/https://damp-brushlands-91192.herokuapp.com/order/add-order', customerInfo)
                 console.log(response.status)
-                window.location.href = '/order-success'
+                props.history.push('/order-success')
             }
             catch (error) {
                 console.log(error)
@@ -110,12 +116,18 @@ const mapDispatchToProps = (dispatch) => {
     return {
         findStore: (newCustomerInfo) => dispatch({type: 'ADDRESS_SAVED', customerInfo: newCustomerInfo}),
         isError: () => dispatch({type: 'DISPLAY_ORDER_ERROR'}),
-        missingField: () => dispatch({type: 'DISPLAY_MISSING_FIELD_ERROR'})
+        missingField: () => dispatch({type: 'DISPLAY_MISSING_FIELD_ERROR'}),
+        customerContactInfo: (newCustomerEmail, newCustomerPhone, newCustomerFirst, newCustomerLast) => dispatch({
+            type: 'CUSTOMER_CONTACT',
+            customerEmail: newCustomerEmail,
+            customerPhone: newCustomerPhone,
+            customerFirst: newCustomerFirst,
+            customerLast: newCustomerLast
+        })
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         propsState: state,
         addressNotNull: state.addressNotNull,

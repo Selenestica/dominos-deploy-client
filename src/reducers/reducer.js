@@ -3,6 +3,12 @@ const initialState = {
     addressNotNull: false,  
     storeId: '',
     storeIdNotNull: false,
+    storeAddress: '',
+    storePhone: '',
+    customerEmail: '',
+    customerPhone: '',
+    customerFirst: '',
+    customerLast: '',
     itemId: [],
     itemName: [],
     drinksMenuOpen: false,
@@ -27,11 +33,23 @@ const reducer = (state = initialState, action) => {
         }
     }
 
-    else if (action.type === 'STORE_ID_SAVED') {
+    else if (action.type === 'CUSTOMER_CONTACT') {
+        return {
+            ...state,
+            customerEmail: action.customerEmail,
+            customerPhone: action.customerPhone,
+            customerFirst: action.customerFirst,
+            customerLast: action.customerLast
+        }
+    }
+
+    else if (action.type === 'STORE_INFO_SAVED') {
         return {
             ...state,
             storeId: action.storeId,
-            storeIdNotNull: true
+            storeIdNotNull: true,
+            storeAddress: action.storeAddress,
+            storePhone: action.storePhone
         }
     }
 
