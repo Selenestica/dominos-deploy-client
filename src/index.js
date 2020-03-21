@@ -12,6 +12,7 @@ import App from './App';
 import Navbar from './components/Navbar'
 import Order from './components/Order'
 import OrderSuccess from './components/OrderSuccess'
+import About from './components/About'
 
 // CSS IMPORTS
 import './css/index.css'
@@ -34,6 +35,7 @@ ReactDOM.render(
                         <Route exact path='/' component = {App} />
                         <Route exact path='/order-details' component = {Order} />
                         <Route exact path='/order-success' component = {OrderSuccess} />
+                        <Route exact path='/about' component = {About} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

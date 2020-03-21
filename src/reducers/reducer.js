@@ -3,6 +3,12 @@ const initialState = {
     addressNotNull: false,  
     storeId: '',
     storeIdNotNull: false,
+    storeAddress: '',
+    storePhone: '',
+    customerEmail: '',
+    customerPhone: '',
+    customerFirst: '',
+    customerLast: '',
     itemId: [],
     itemName: [],
     drinksMenuOpen: false,
@@ -13,6 +19,8 @@ const initialState = {
     saladMenuOpen: false,
     sandwichMenuOpen: false,
     wingsMenuOpen: false,
+    isError: false,
+    missingField: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,11 +33,23 @@ const reducer = (state = initialState, action) => {
         }
     }
 
-    else if (action.type === 'STORE_ID_SAVED') {
+    else if (action.type === 'CUSTOMER_CONTACT') {
+        return {
+            ...state,
+            customerEmail: action.customerEmail,
+            customerPhone: action.customerPhone,
+            customerFirst: action.customerFirst,
+            customerLast: action.customerLast
+        }
+    }
+
+    else if (action.type === 'STORE_INFO_SAVED') {
         return {
             ...state,
             storeId: action.storeId,
-            storeIdNotNull: true
+            storeIdNotNull: true,
+            storeAddress: action.storeAddress,
+            storePhone: action.storePhone
         }
     }
 
@@ -166,6 +186,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 wingsMenuOpen: false
             }
+        }
+    }
+
+    else if (action.type === 'DISPLAY_ORDER_ERROR') {
+        return {
+            ...state,
+            isError: true
+        }
+    }
+
+    else if (action.type === 'DISPLAY_MISSING_FIELD_ERROR') {
+        return {
+            ...state,
+            missingField: true
         }
     }
 

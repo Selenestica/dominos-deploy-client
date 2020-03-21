@@ -17,16 +17,18 @@ function ClosestStore(props) {
             const storeDetails = Object.keys(json.Stores).map((key) => {
 
                 let storeId = json.Stores[key].StoreID
+                let storeAddress = json.Stores[key].AddressDescription
+                let storePhone = json.Stores[key].Phone
 
                 return(<>
                 
                 <div>
-                    <p><span><b>Store #</b></span>: {json.Stores[key].StoreID}</p>
-                    <p><span><b>Address</b></span>: {json.Stores[key].AddressDescription}</p>
-                    <p><span><b>Phone</b></span>: {json.Stores[key].Phone}</p>
+                    <p><span><b>Store #</b></span>: {storeId}</p>
+                    <p><span><b>Address</b></span>: {storeAddress}</p>
+                    <p><span><b>Phone</b></span>: {storePhone}</p>
                     <div className="step-2-div">
                         <h4>Step 2: Choose what you want from the menu</h4>
-                        <button className="open-menu-button green" onClick={() => props.getStoreID(storeId)}><i className="material-icons carryout-icon small">arrow_downward</i></button>
+                        <button className="open-menu-button green" onClick={() => props.getStoreInfo(storeId, storeAddress, storePhone)}><i className="material-icons carryout-icon small">arrow_downward</i></button>
                     </div>
                 </div>
                 
@@ -54,7 +56,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getStoreID: (newStoreId) => dispatch({type: 'STORE_ID_SAVED', storeId: newStoreId})
+        getStoreInfo: (newStoreId, newStoreAddress, newStorePhone) => dispatch({
+            type: 'STORE_INFO_SAVED', storeId: newStoreId, storeAddress: newStoreAddress, storePhone: newStorePhone
+        })
     }
 }
 

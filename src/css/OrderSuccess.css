@@ -3,6 +3,12 @@
     padding: 1rem;
 }
 
+.order-details-div {
+    border: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
 .faq-div li{
     font-size: 2rem;
 }
