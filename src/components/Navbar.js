@@ -11,6 +11,7 @@ function Navbar() {
             <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down navbar-ul">
                 <li><a href="/order-details"><i className="material-icons burger-menu-icons">local_pizza</i></a></li>
+                <li><a href="/about"><i className="material-icons burger-menu-icons">info</i></a></li>
             </ul>
             </div>
         </nav>
@@ -20,6 +21,7 @@ function Navbar() {
                 <Menu>
                     <li><a href="/"><i className="material-icons burger-menu-icons">home</i></a></li>
                     <li><a href="/order-details"><i className="material-icons burger-menu-icons">local_pizza</i></a></li>
+                    <li><a href="/about"><i className="material-icons burger-menu-icons">info</i></a></li>
                 </Menu>
             </div>
         </nav>

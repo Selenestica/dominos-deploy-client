@@ -22,6 +22,7 @@ import './css/PizzaMenu.css'
 import './css/ClosestStore.css'
 import './css/OrderSuccess.css'
 import './css/DrinksMenu.css'
+import './css/About.css'
 import 'materialize-css/dist/css/materialize.min.css';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) 

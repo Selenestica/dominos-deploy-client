@@ -88,9 +88,9 @@ function AllMenus(props) {
                                 </div>
                             </div> : null}
 
-                            <div className="items-array-div green lighten-5">
-                                    <p className="p-order-titles">Your order<i onClick={() => props.clearOrder()} className="material-icons carryout-icon clear-cart-icon">clear</i></p>
-                                    <p className="items-array-p"><b>{props.itemName}</b></p>
+                            <div className="items-array-div green lighten-5 step-divs">
+                                <p className="p-order-titles">Your order<i onClick={() => props.clearOrder()} className="material-icons carryout-icon clear-cart-icon">clear</i></p>
+                                <p className="items-array-p"><b>{props.itemName}</b></p>
                             </div>
 
                         </div>
@@ -110,7 +110,7 @@ const mapDispatchToProps = (dispatch) => {
       openSaladMenu: () => dispatch({type: 'OPEN_SALAD_MENU'}),
       openSandwichMenu: () => dispatch({type: 'OPEN_SANDWICH_MENU'}),
       openWingsMenu: () => dispatch({type: 'OPEN_WINGS_MENU'}),
-
+      clearOrder: () => dispatch({type: 'CLEAR_ORDER'})
   }
 }
 

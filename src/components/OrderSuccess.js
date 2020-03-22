@@ -23,7 +23,7 @@ function OrderSuccess(props) {
                 <div className="col l10 offset-l1 s12 m12">
 
                     <h1>Your order has been placed!</h1>
-                    <div className="order-details-div">
+                    <div className="step-divs">
                         <h3>Your order details</h3>
                         <p className="p-titles">Your order</p>
                             {item}
@@ -39,7 +39,7 @@ function OrderSuccess(props) {
                     </div>
                     <div className="row buttons-row">
                         <a className="button-as" href="/">
-                            <div id="carryout-button-div" className="green home-button">
+                            <div id="carryout-button-div" className="green home-button step-divs your-dominos-div">
                                 <div>
                                     <i className="material-icons carryout-icon">home</i>
                                     <h1 className="button-h1s">Go back home</h1>
@@ -47,7 +47,7 @@ function OrderSuccess(props) {
                             </div>
                         </a>
                     </div>
-                    <div className="faq-div">
+                    <div className="faq-div step-divs">
                         <h3>Things to know</h3>
                         <li>
                             You should have received an email from Domino's confirming your order.

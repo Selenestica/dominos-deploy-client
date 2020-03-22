@@ -66,13 +66,13 @@ function Order(props) {
                     <h4>Step 1: Find the Domino's nearest to you</h4>
                     <div className="step-divs">
                         <p className="p-titles">Your address</p>
-                        <input type="text" onChange={handleChange} name="street" placeholder="street" />
-                        <input type="text" onChange={handleChange} name="city" placeholder="city" />
-                        <input type="text" onChange={handleChange} name="state" placeholder="state" />
-                        <input type="text" onChange={handleChange} name="zip" placeholder="zip code" />
+                        <input type="text" onChange={handleChange} name="street" className="placeholder-text" placeholder="street" />
+                        <input type="text" onChange={handleChange} name="city" className="placeholder-text" placeholder="city" />
+                        <input type="text" onChange={handleChange} name="state" className="placeholder-text" placeholder="state" />
+                        <input type="text" onChange={handleChange} name="zip" className="placeholder-text" placeholder="zip code" />
                         <button className="open-menu-button green" onClick={() => props.findStore(customerInfo)}><i className="material-icons carryout-icon small">search</i></button>
                     </div>
-                    {props.addressNotNull ? <div className="step-divs">
+                    {props.addressNotNull ? <div className="step-divs your-dominos-div">
                         <p className="p-titles">Your Domino's</p>
                         <ClosestStore />
                         <input type="hidden" onChange={handleChange} name="chosenStore" value={props.storeId} />
@@ -86,20 +86,20 @@ function Order(props) {
                         <h4>Step 3: Enter your info, and place the order!</h4>
                         <div className="step-divs">
                             <p className="p-titles">Contact Info</p>
-                            <input type="text" onChange={handleChange} name="firstName" placeholder="first name" />
-                            <input type="text" onChange={handleChange} name="lastName" placeholder="last name" />
-                            <input type="text" onChange={handleChange} name="email" placeholder="email" />
-                            <input type="text" onChange={handleChange} name="phone" placeholder="phone number" />
+                            <input type="text" onChange={handleChange} name="firstName" className="placeholder-text" placeholder="first name" />
+                            <input type="text" onChange={handleChange} name="lastName" className="placeholder-text" placeholder="last name" />
+                            <input type="text" onChange={handleChange} name="email" className="placeholder-text" placeholder="email" />
+                            <input type="text" onChange={handleChange} name="phone" className="placeholder-text" placeholder="phone number" />
                         </div>
-                        <div className="step-divs">
+                        <div className="step-divs your-dominos-div">
                             <p className="p-titles">Payment</p>
-                            <input type="text" onChange={handleChange} name="cardNumber" placeholder="cc number" />
-                            <input type="text" onChange={handleChange} name="expiration" placeholder="expiration" />
-                            <input type="text" onChange={handleChange} name="securityCode" placeholder="security code" />
-                            <input type="text" onChange={handleChange} name="cardZip" placeholder="zip code" />
+                            <input type="text" onChange={handleChange} name="cardNumber" className="placeholder-text" placeholder="cc number" />
+                            <input type="text" onChange={handleChange} name="expiration" className="placeholder-text" placeholder="expiration" />
+                            <input type="text" onChange={handleChange} name="securityCode" className="placeholder-text" placeholder="security code" />
+                            <input type="text" onChange={handleChange} name="cardZip" className="placeholder-text" placeholder="zip code" />
                         </div>
                         <Alerts />
-                        <div onClick={onHandleSubmitCustomerInfo} className="green place-order-button-div">
+                        <div onClick={onHandleSubmitCustomerInfo} className="green place-order-button-div your-dominos-div">
                             <a className="place-order-button"><i className="material-icons carryout-icon large">check</i><h1 className="place-order-text">Place order</h1></a>
                         </div>
                    </div> : null}
