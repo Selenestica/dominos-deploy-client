@@ -1,26 +1,44 @@
-import React from 'react';
-import './css/App.css';
+// DEPENDENCIES
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
 
-function App() {
+// COMPONENT IMPORTS
+import Navbar from "./components/Navbar";
+import Order from "./components/Order";
+import OrderSuccess from "./components/OrderSuccess";
+import About from "./components/About";
+import Landing from "./components/Landing";
 
-  return (
-    <>
-    <div className="container app-container">
-      <h1 className="desktop-title-h1">DOMino's</h1>
-      <h4>An open source pizza delivery app</h4>
-      <div className="row buttons-row">
-          <a className="button-as" href="/order-details">
-            <div id="carryout-button-div" className="col l6 offset-l3 s12 m12 green step-divs">
-              <div>
-                <i className="material-icons carryout-icon">local_pizza</i>
-                <h1 className="button-h1s">Start</h1>
-              </div>
-            </div>
-          </a>
-      </div>
-    </div>
-    </>
-  );
+// CSS IMPORTS
+import "./css/index.css";
+import "./css/Navbar.css";
+import "./css/Order.css";
+import "./css/PizzaMenu.css";
+import "./css/ClosestStore.css";
+import "./css/OrderSuccess.css";
+import "./css/DrinksMenu.css";
+import "./css/About.css";
+import "./css/App.css";
+import "materialize-css/dist/css/materialize.min.css";
+import Layout from "./components/Layout";
+
+class App extends Component {
+  render() {
+    let routes = (
+      <Switch>
+        <Route exact path="/order-details" component={Order} />
+        <Route exact path="/order-success" component={OrderSuccess} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/" component={Landing} />
+      </Switch>
+    );
+
+    return (
+      <>
+        <Layout>{routes}</Layout>
+      </>
+    );
+  }
 }
 
 export default App;
